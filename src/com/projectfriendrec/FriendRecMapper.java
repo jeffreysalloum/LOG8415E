@@ -31,7 +31,6 @@ public class FriendRecMapper
                         Long friendID = Long.parseLong(itr.nextToken());
                         friendIDs.add(friendID);
                         context.write(new LongWritable(userID), new FriendRecordWritable(friendID, -1L));
-                        // context.write(new LongWritable(userID), new Text(LongWritable(friendId))
                     }
 
                     // Create a record for each combination of friendID:
@@ -41,11 +40,9 @@ public class FriendRecMapper
                         	if (i == j) continue;
                             context.write(new LongWritable(friendIDs.get(i)),
                                     new FriendRecordWritable((friendIDs.get(j)), userID));
-                            // context.write(new LongWritable(friendIDs.get(j)),
-                            //         new FriendRecordWritable((friendIDs.get(i)), userID));
                         }
                     }
-                } // else { context.write(new LongWritable(-1L), new FriendCountWritable()); }           	
+                }         	
             } catch(Exception e) {
             	e.printStackTrace();
             }

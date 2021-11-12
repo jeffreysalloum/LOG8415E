@@ -8,7 +8,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-// Reducer class for collecting every mutual friends 
+// Reducer class for collecting every mutual friends.
 public class FriendRecReducer
     extends Reducer<LongWritable, FriendRecordWritable, LongWritable, Text> {
 	
@@ -36,7 +36,7 @@ public class FriendRecReducer
         	 }
         );
         
-        // Fill the results, sorted per entry
+        // Fill the results, sorted per entry.
         Map<Long, List<Long>> sortedMap = new LinkedHashMap<Long, List<Long>>();
         for (Map.Entry<Long, List<Long>> sortedListEntry : list) {
         	sortedMap.put(sortedListEntry.getKey(), sortedListEntry.getValue());
